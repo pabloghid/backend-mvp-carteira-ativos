@@ -1,0 +1,6 @@
+flask
+SQLAlchemy
+Flask-SQLAlchemy
+SQLAlchemy-Utils
+flask-openapi3[swagger]
+pydantic
