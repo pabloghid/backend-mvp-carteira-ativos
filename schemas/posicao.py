@@ -11,7 +11,7 @@ class PosicaoSchema(BaseModel):
     quantidade: int
     preco_medio: float
     total_investido: float
-    dt_atualizacao: Optional[datetime]
+    dt_atualizacao: Optional[datetime] = None
 
 class ListagemPosicoesSchema(BaseModel):
     """
@@ -27,17 +27,17 @@ class PosicaoViewSchema(BaseModel):
     quantidade: int
     preco_medio: float
     total_investido: float
-    dt_atualizacao: datetime
+    dt_atualizacao: Optional[datetime] = None
 
 class PosicaoUpdateSchema(BaseModel):
     """ 
     Representação da edição de produto
     """
-    ativo_id: Optional[int]
-    quantidade: Optional[int]
-    preco_medio: Optional[float]
-    total_investido: Optional[float]
-    dt_atualizacao: Optional[datetime]
+    ativo_id: Optional[int] = None
+    quantidade: Optional[int] = None
+    preco_medio: Optional[float] = None
+    total_investido: Optional[float] = None
+    dt_atualizacao: Optional[datetime] = None
 
 class PosicaoPathSchema(BaseModel):
     """
@@ -61,15 +61,16 @@ def listar_posicoes(posicoes: List[Posicao]):
     result = []
     for posicao in posicoes:
         result.append({
+            "id": posicao.id,
             "nome": posicao.ativo.nome,
             "codigo_negociacao": posicao.ativo.codigo_negociacao,
-            "valor": posicao.quantidade,
+            "quantidade": posicao.quantidade,
             "preco_medio": posicao.preco_medio,
             "total_investido": posicao.total_investido,
-            "dt_atualizacao": posicao.dt_atualizacao.isoformat() if posicao.dt_atualizacao else None,
+            "dt_atualizacao": posicao.dt_atualizacao.strftime("%d/%m/%Y") if posicao.dt_atualizacao else None,
         })
 
-    return {"produtos": result}
+    return {"posicoes": result}
 
 def listar_posicao(posicao: Posicao):
     """ Retorna uma representação do produto seguindo o schema definido em
@@ -82,5 +83,5 @@ def listar_posicao(posicao: Posicao):
         "valor": posicao.quantidade,
         "preco_medio": posicao.preco_medio,
         "total_investido": posicao.total_investido,
-        "dt_atualizacao": posicao.dt_atualizacao.isoformat() if posicao.dt_atualizacao else None,
+        "dt_atualizacao": posicao.dt_atualizacao.strftime("%d/%m/%Y") if posicao.dt_atualizacao else None,
     }
