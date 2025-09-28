@@ -61,7 +61,7 @@ def get_ativos():
          responses={"200": ListagemPosicoesSchema, "404": ErrorSchema})
 def get_posicoes():
     """
-    Listar todas as posições
+    Lista todas as posições
     """
     try:
         session = Session()
@@ -111,7 +111,7 @@ def add_posicao(form: PosicaoSchema):
          responses={"200": PosicaoViewSchema, "404": ErrorSchema})
 def get_posicao(path: PosicaoPathSchema):
     """
-    Listar todas as posições
+    Lista uma posição
     """
     try:
         session = Session()
