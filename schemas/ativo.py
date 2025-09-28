@@ -19,7 +19,7 @@ def listar_ativos(ativos: List[Ativo]):
 
 class AtivoSchema(BaseModel):
     """ 
-    Define como um novo produto a ser inserido deve ser representado
+    Define como um novo ativo a ser inserido deve ser representado
     """
     id: int
     nome: str
@@ -28,6 +28,6 @@ class AtivoSchema(BaseModel):
 
 class ListagemAtivosSchema(BaseModel):
     """
-      Define como uma listagem de Posições será retornada.
+      Define como uma listagem de Ativos será retornada.
     """
     ativos:List[AtivoSchema]

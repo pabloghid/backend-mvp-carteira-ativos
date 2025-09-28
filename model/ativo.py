@@ -16,7 +16,7 @@ class Ativo(Base):
 
     def __init__(self, nome:str, codigo_negociacao:str, tipo:str):
         """
-        Cria um Produto
+        Cria um Ativo
 
         Arguments:
             nome: nome do ativo

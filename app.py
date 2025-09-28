@@ -24,13 +24,13 @@ try:
 except Exception as e:
     print(e)
 
-info = Info(title="Finances API", version="1.0.0")
+info = Info(title="Carteira de Ativos API", version="1.0.0")
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
-posicoes_tag = Tag(name="posicoes", description="Posições de ativos")
-ativos_tag = Tag(name="ativos", description="Ativos")
-home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
+posicoes_tag = Tag(name="Posições", description="Posições de ativos")
+ativos_tag = Tag(name="Ativos", description="Ativos")
+home_tag = Tag(name="Documentação", description="Rota para a documentação")
 
 
 @app.get('/', tags=[home_tag])
@@ -154,7 +154,7 @@ def update_posicao(path: PosicaoPathSchema, form: PosicaoUpdateSchema):
 
 @app.delete('/posicao/<int:posicao_id>', summary="Deletar posição", tags=[posicoes_tag], 
             responses={"200": PosicaoDelSchema, "404": ErrorSchema})
-def del_produto(path: PosicaoPathSchema):
+def del_posicao(path: PosicaoPathSchema):
     """
     Deleta uma posição pelo ID
     """

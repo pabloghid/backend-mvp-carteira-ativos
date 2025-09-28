@@ -5,7 +5,7 @@ from datetime import datetime
 
 class PosicaoSchema(BaseModel):
     """ 
-    Define como um novo produto a ser inserido deve ser representado
+    Define como uma nova posição a ser inserida deve ser representada
     """
     ativo_id: int
     quantidade: int
@@ -31,7 +31,7 @@ class PosicaoViewSchema(BaseModel):
 
 class PosicaoUpdateSchema(BaseModel):
     """ 
-    Representação da edição de produto
+    Representação da edição de posição
     """
     ativo_id: Optional[int] = None
     quantidade: Optional[int] = None
@@ -73,8 +73,7 @@ def listar_posicoes(posicoes: List[Posicao]):
     return {"posicoes": result}
 
 def listar_posicao(posicao: Posicao):
-    """ Retorna uma representação do produto seguindo o schema definido em
-        ProdutoViewSchema.
+    """ Retorna uma representação da posição,
     """
     return {
         "id": posicao.id,
